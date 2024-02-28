@@ -6,10 +6,67 @@
   Code adapted from : https://www.mongodb.com/docs/v4.0/reference/operator/meta/orderby/
   Code adapted from : https://stackoverflow.com/questions/26967525/insert-an-embedded-document-to-a-new-field-in-mongodb-document
   Code adapted from : https://www.mongodb.com/docs/manual/reference/operator/update/pull/
+  COde adapted from : https://github.com/buwebdev/web-335/blob/master/week_6/houses.js
   */
 
-/* Application Setup Section. Only need to run once...
- */
+/* Drop Database Collections  */
+db.books.drop();
+db.customers.drop();
+
+/* Create Database collections */
+
+//Create the books collection
+db.createCollection("books", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      properties: {
+        bookId: {
+          bsonType: "string",
+        },
+        title: {
+          bsonType: "string",
+        },
+        author: {
+          bsonType: "string",
+        },
+        genre: {
+          bsonType: "string",
+        },
+      },
+    },
+  },
+});
+
+//Create the customers collection
+db.createCollection("customers", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      properties: {
+        firstName: {
+          bsonType: "string",
+        },
+        lastName: {
+          bsonType: "string",
+        },
+        customerId: {
+          bsonType: "string",
+        },
+        password: {
+          bsonType: "string",
+        },
+        password: {
+          bsonType: "string",
+        },
+        whishListItems: {
+          bsonType: "array",
+        },
+      },
+    },
+  },
+});
+/* Populate customers collection  */
 //Add 2 new users to the customer collection
 miller = {
   _id: "12345",
@@ -57,6 +114,8 @@ freeman = {
 };
 db.customers.insertOne(freeman);
 
+/* Populate books collection  */
+
 //Add 2 books to the books collection
 let book1 = {
   bookId: "11223344",
@@ -94,8 +153,7 @@ let book4 = {
 
 db.books.insertOne(book4);
 
-/* Assignment queries
- */
+/* Assignment queries */
 
 //Display a list of books
 db.books.find();
