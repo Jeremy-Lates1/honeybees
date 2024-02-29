@@ -72,7 +72,7 @@ miller = {
   _id: "12345",
   firstName: "Jason",
   lastName: "Miller",
-  customerId: "a414125",
+  customerId: "c1007",
   password: "s3cret",
   whishListItems: [
     {
@@ -95,7 +95,7 @@ freeman = {
   _id: "67891",
   firstName: "Joy",
   lastName: "Freeman",
-  customerId: "a414126",
+  customerId: "c1008",
   password: "s3cret",
   whishListItems: [
     {
