@@ -172,7 +172,7 @@ db.customers.aggregate([
   {
     //Find the customer
     $match: {
-      customerId: "a414125",
+      customerId: "c1007",
     },
   },
   {
@@ -189,7 +189,7 @@ db.customers.aggregate([
 
 //Add books to a customers wishlist
 db.customers.update(
-  { customerId: "a414125" },
+  { customerId: "c1007" },
   {
     $push: {
       wishListItems: {
@@ -203,6 +203,6 @@ db.customers.update(
 );
 //Remove book from customer wishlist
 db.customers.update(
-  { customerId: "a414125" },
+  { customerId: "c1007" },
   { $pull: { wishListItems: { bookId: "11111111" } } }
 );
