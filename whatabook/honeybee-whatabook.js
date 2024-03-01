@@ -59,7 +59,7 @@ db.createCollection("customers", {
         password: {
           bsonType: "string",
         },
-        whishListItems: {
+        wishListItems: {
           bsonType: "array",
         },
       },
@@ -74,7 +74,7 @@ miller = {
   lastName: "Miller",
   customerId: "c1007",
   password: "s3cret",
-  whishListItems: [
+  wishListItems: [
     {
       bookId: "11223344",
       title: "Gone with the wind",
@@ -97,7 +97,7 @@ freeman = {
   lastName: "Freeman",
   customerId: "c1008",
   password: "s3cret",
-  whishListItems: [
+  wishListItems: [
     {
       bookId: "12121212",
       title: "My Dog Kobe",
@@ -167,7 +167,7 @@ db.books.find().sort({ author: 1 });
 //Display a book by book id.
 db.books.find({ bookId: "11223344" });
 
-//Display a whishlist by customerId
+//Display a wishlist by customerId
 db.customers.aggregate([
   {
     //Find the customer
@@ -179,10 +179,10 @@ db.customers.aggregate([
     $project: {
       _id: 0,
       customerId: 1,
-      "whishListItems.bookId": 1,
-      "whishListItems.title": 1,
-      "whishListItems.author": 1,
-      "whishListItems.genre": 1,
+      "wishListItems.bookId": 1,
+      "wishListItems.title": 1,
+      "wishListItems.author": 1,
+      "wishListItems.genre": 1,
     },
   },
 ]);
@@ -192,7 +192,7 @@ db.customers.update(
   { customerId: "a414125" },
   {
     $push: {
-      whishListItems: {
+      wishListItems: {
         bookId: "11111111",
         title: "In good Faith",
         author: "Scott Pratt",
@@ -204,5 +204,5 @@ db.customers.update(
 //Remove book from customer wishlist
 db.customers.update(
   { customerId: "a414125" },
-  { $pull: { whishListItems: { bookId: "11111111" } } }
+  { $pull: { wishListItems: { bookId: "11111111" } } }
 );
