@@ -1,0 +1,88 @@
+//Honeybee Books Users
+
+Miller = {
+    "firstName": "Jason",
+    "lastName": "Miller",
+    "customerId":  "hb0001",
+    "password": "HoneyB33",
+    "wishListItems": [
+        {
+            "bookId": "10001",
+            "title": "Dune",
+            "author": "Frank Herbert",
+            "genre": "Science Fiction"
+        },
+        {
+            "bookId": "10002",
+            "title": "Don Quixote",
+            "author": "Miguel de Cervantes",
+            "genre": "Adventure"
+        },
+        {
+            "bookId": "100003",
+            "title": "Atlas Shrugged",
+            "author": "Ayn Rand",
+            "genre": "Adventure"
+        },
+        {
+            "bookId": "112233",
+            "title": "Treasure Island",
+            "author": "Robert Louis Stevenson",
+            "genre": "Adventure"
+        },
+        {
+            "bookId": "123456",
+            "title": "The Luminares",
+            "author": "Eleanor Catton",
+            "genre": "Historical"
+        },
+    ]
+}
+
+Bollenger = {
+    "firstName": "Cassandra",
+    "lastName": "Bollenger",
+    "customerId":  "hb0002",
+    "password": "butterscotch22",
+    "wishListItems": [
+        {
+            "bookId": "200001",
+            "title": "The Love Songs of W.E.B. Du Bois",
+            "author": "Honoree Fanonne Jeffers",
+            "genre": "Historical"
+        },
+        {
+            "bookId": "222111",
+            "title": "The Invisible Man",
+            "author": "H.G. Wells",
+            "genre": "Romance"
+        },
+        {
+            "bookId": "654321",
+            "title": "The Remains of the Day",
+            "author": "Kazuo Ishiguro",
+            "genre": "Romance",
+        }
+    ]
+}
+
+Jones = {
+    "firstName": "Amy",
+    "lastName": "Jones",
+    "customerId": "hb0003",
+    "password": "b00kr3ader",
+    "wishListItems": [
+        {
+            "bookId": "333444",
+            "title": "Emma",
+            "author": "Jane Austen",
+            "genre": "Romance",
+        },
+        {
+            "bookId": "555666",
+            "title": "Gaudy Night",
+            "author": "Dorothy L. Sayers",
+            "genre": "Mystery" 
+        },
+    ]
+}
