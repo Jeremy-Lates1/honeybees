@@ -45,3 +45,11 @@ for book in db.books.find({"genre": choice}):
     print('Title:', book.get("title"))
 
 
+entered_id = input('Enter you customer ID number to see your wishlist: ')
+
+if entered_id == 'c1001':
+    for customer in db.customer.find({'customerId': entered_id}):
+        print('Wishlist:', customer.get('wishListItems'))
+else:
+    print('Incorrect ID: No customer found.')
+    
