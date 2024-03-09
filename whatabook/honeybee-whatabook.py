@@ -38,7 +38,8 @@ choice = input('''Select a genre:
         Drama
         Aviation
 ''')
-
+# A blank line
+print('')
 # Prints the selected choice
 print('You selected ' + choice)
 
@@ -52,14 +53,22 @@ for book in db.books.find({"genre": choice}):
 # A blank line
 print('')
 
-# A function that finds the customer id
+
 def find_id(id):
-    
-    # A loop that finds the wishlist by id and prints by title
-    for customer in db.customer.find({'customerId': id}, {'firstName':1, 'lastName': 1, 'wishListItems.title': 1}):
-        print('Your wishlist: ', customer.get('wishListItems'))
-        
-           
+    # Creating a pipeline to match by entered id
+    pipeline = [{"$match": {"customerId": id}}]
+    results = db.customer.aggregate(pipeline)
+
+    # A loop that prints the results
+    for customer in results:
+        print("Customer Id: " + customer["customerId"] + " Name: " + customer["firstName"] + " " + customer["lastName"])
+
+        #A loop to print the wishlist
+        print("Your wishlist:")
+        for x in customer["wishListItems"]:
+            print(x)
+
+
 # An input field that requests input from the user
 entered_id = input('Enter you customer ID number to see your wishlist: ')
 
