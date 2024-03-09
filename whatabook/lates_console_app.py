@@ -45,7 +45,7 @@ if mycustomerid == "c1007" or mycustomerid == "c1008" or mycustomerid == "c1009"
   for customer in results:
     print("Customer Id: " + customer["customerId"] + " Name: " + customer["firstName"] + " " + customer["lastName"])
     print("The wishlist:")
-    for x in customer["whishListItems"]:
+    for x in customer["wishListItems"]:
       print(x)
 else:
   print("Invalid customer account ID!")
