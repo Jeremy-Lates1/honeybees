@@ -1,5 +1,5 @@
 /* 
-  Name: Jeremy Lates / Devonte Ellis/ Evelyn Zapeda
+  Name: Jeremy Lates / Devonte Ellis/ Evelyn Zepeda
   Date: 02/25/2024
   Code Attributions:  Professor Krasso class documentation 
   Code adapted from : https://www.mongodb.com/docs/v4.0/reference/operator/meta/orderby/

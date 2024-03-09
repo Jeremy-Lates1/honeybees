@@ -1,7 +1,7 @@
 
-#	Title: zepeda-honeybee-whatabook.js
-#    Author: Evelyn Zepeda
-#    Date: 2/29/24
+#	Title: honeybee-whatabook.js
+#    Name: Jeremy Lates/ Devonte Ellis/ Evelyn Zepeda
+#    Date: 3/8/24
 #    Description: Python script for whatabook
 
 #To import MongoClient from pymongo
@@ -19,13 +19,16 @@ db = client['web335DB']
 
 #A label for the displayed books
 print('The following is a list of books:')
+
+# A blank line for spacing
 print('')
 
 #Display a list of books
 for book in db.books.find({}):
     print(f"{book['title']}")
 
-print('')
+# A blank line for spacing
+print('') 
 
 # A variable to store the user's choice
 choice = input('''Select a genre:
@@ -45,16 +48,18 @@ print('')
 # A loop that prints the books by genre based on choice
 for book in db.books.find({"genre": choice}):
     print('Title:', book.get("title"))
+
 # A blank line
 print('')
 
 # A function that finds the customer id
 def find_id(id):
-    for customer in db.customer.find({'customerId': id}):
-        print('Wishlist:', customer.get('wishListItems'))
+    
+    # A loop that finds the wishlist by id and prints by title
+    for customer in db.customer.find({'customerId': id}, {'firstName':1, 'lastName': 1, 'wishListItems.title': 1}):
+        print('Your wishlist: ', customer.get('wishListItems'))
+        
            
-
-
 # An input field that requests input from the user
 entered_id = input('Enter you customer ID number to see your wishlist: ')
 
@@ -63,7 +68,7 @@ entered_id = input('Enter you customer ID number to see your wishlist: ')
 if entered_id == 'c1006':
     find_id(entered_id)
 elif entered_id == 'c1007':
-    find_id(entered_id)
+    x = find_id(entered_id)
 elif entered_id == 'c1008':
     find_id(entered_id)
 else:
