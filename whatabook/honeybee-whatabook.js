@@ -1,6 +1,5 @@
-"use strict";
 /* 
-  Name: Jeremy Lates / Devonte Ellis/ Evelyn Zapeda
+  Name: Jeremy Lates / Devonte Ellis/ Evelyn Zepeda
   Date: 02/25/2024
   Code Attributions:  Professor Krasso class documentation 
   Code adapted from : https://www.mongodb.com/docs/v4.0/reference/operator/meta/orderby/
@@ -9,200 +8,270 @@
   COde adapted from : https://github.com/buwebdev/web-335/blob/master/week_6/houses.js
   */
 
-/* Drop Database Collections  */
-db.books.drop();
-db.customers.drop();
+//To drop database collections
+db.books.drop()
+db.customer.drop()
 
-/* Create Database collections */
 
-//Create the books collection
+//Create the collection for books
 db.createCollection("books", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      properties: {
-        bookId: {
-          bsonType: "string",
-        },
-        title: {
-          bsonType: "string",
-        },
-        author: {
-          bsonType: "string",
-        },
-        genre: {
-          bsonType: "string",
-        },
-      },
-    },
-  },
-});
+    validator: { $jsonSchema: {
+        bsonType: "object",
+        properties: {
+            bookId: {
+                bsonType: "string"
+            },
+            title: {
+                bsonType: "string"
+            },
+            author: {
+                bsonType: "string"
+            },
+            genre: {
+                bsonType: "string"
+            }
+        }
+    }}
+})
 
-//Create the customers collection
-db.createCollection("customers", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      properties: {
-        firstName: {
-          bsonType: "string",
-        },
-        lastName: {
-          bsonType: "string",
-        },
-        customerId: {
-          bsonType: "string",
-        },
-        password: {
-          bsonType: "string",
-        },
-        password: {
-          bsonType: "string",
-        },
-        wishListItems: {
-          bsonType: "array",
-        },
-      },
-    },
-  },
-});
-/* Populate customers collection  */
-//Add 2 new users to the customer collection
+//Create the collection for customer
+db.createCollection("customer", {
+    validator: { $jsonSchema: {
+        bsonType: "object",
+        properties: {
+            firstName: {
+                bsonType: "string"
+            },
+            lastName: {
+                bsonType: "string"
+            },
+            customerId: {
+                bsonType: "string"
+            },
+            password: {
+                bsonType: "string"
+            },
+            wishListItems: {
+                bsonType: "array"
+            }
+        }
+    }}
+})
+
+// Users
 miller = {
-  _id: "12345",
-  firstName: "Jason",
-  lastName: "Miller",
-  customerId: "c1007",
-  password: "s3cret",
-  wishListItems: [
-    {
-      bookId: "11223344",
-      title: "Gone with the wind",
-      author: "Margaret Mitchell",
-      genre: "drama",
-    },
-    {
-      bookId: "55667788",
-      title: "Midnight Shadows",
-      author: "Nora Roberts",
-      genre: "romance",
-    },
-  ],
-};
-db.customers.insertOne(miller);
+    firstName: "Jason",
+    lastName: "Miller",
+    customerId: "c1006",
+    password: "s3cret",
+    wishListItems: [
+        {
+            bookId: "1111",
+            title: "The Hobbit",
+            author: "J.R.R. Tolkien",
+            genre: "Fantasy"
+        },
+        {
+            bookId: "2222",
+            title: "Dune",
+            author: "Frank Herbert",
+            genre: "Fiction"
+        },
+        {
+            bookId: "3333",
+            title: "The Giver",
+            author: "Lois Lowry",
+            genre: "Fiction"
+        },
+        {
+            bookId: "4444",
+            title: "Gone with the Wind",
+            author: "Margaret Mitchell",
+            genre: "Fiction"
+        },
+        {
+            bookId: "5555",
+            title: "Midnight Shadows",
+            author: "Nora Roberts",
+            genre: "Romance"
+        }
+    ]
+}
+
+bollenger = {
+    firstName: "Cassandra",
+    lastName: "Bollenger",
+    customerId: "c1007",
+    password: "s3cret",
+    wishListItems: [
+        {
+            bookId: "6666",
+            title: "Wuthering Heights",
+            author: "Emily Bronte",
+            genre: "Fiction"
+        },
+        {
+            bookId: "7777",
+            title: "Sense and Sensibility",
+            author: "Jane Austen",
+            genre: "Romance"
+        },
+        {
+            bookId: "8888",
+            title: "Anna Karenina",
+            author: "Leo Tolstoy",
+            genre: "Fiction"
+        }
+    ]
+}
 
 freeman = {
-  _id: "67891",
-  firstName: "Joy",
-  lastName: "Freeman",
-  customerId: "c1008",
-  password: "s3cret",
-  wishListItems: [
-    {
-      bookId: "12121212",
-      title: "My Dog Kobe",
-      author: "Jeremy Lates",
-      genre: "drama",
-    },
-    {
-      bookId: "77777777",
-      title: "How to fly",
-      author: "Jordan Lates",
-      genre: "aviation",
-    },
-  ],
-};
-db.customers.insertOne(freeman);
+    firstName: "Joy",
+    lastName: "Freeman",
+    customerId: "c1008",
+    password: "s3cret",
+    wishListItems: [
+      {
+        bookId: "1112",
+        title: "My Dog Kobe",
+        author: "Jeremy Lates",
+        genre: "Drama",
+      },
+      {
+        bookId: "1113",
+        title: "How to fly",
+        author: "Jordan Lates",
+        genre: "Aviation",
+      }
+    ]
+  }
 
-/* Populate books collection  */
+//Inserting the customers
+db.customer.insertMany([miller, bollenger, freeman])
 
-//Add 2 books to the books collection
+//Creating the books
 let book1 = {
-  bookId: "11223344",
-  title: "Gone with the wind",
-  author: "Margaret Mitchell",
-  genre: "drama",
-};
-
-db.books.insertOne(book1);
+    bookId: "1111",
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    genre: "Fantasy"
+}
 
 let book2 = {
-  bookId: "55667788",
-  title: "Midnight Shadows",
-  author: "Nora Roberts",
-  genre: "romance",
-};
-
-db.books.insertOne(book2);
+    bookId: "2222",
+    title: "Dune",
+    author: "Frank Herbert",
+    genre: "Fiction"
+}
 
 let book3 = {
-  bookId: "12121212",
-  title: "My Dog Kobe",
-  author: "Jeremy Lates",
-  genre: "drama",
-};
-
-db.books.insertOne(book3);
+    bookId: "3333",
+    title: "The Giver",
+    author: "Lois Lowry",
+    genre: "Fiction"
+}
 
 let book4 = {
-  bookId: "77777777",
-  title: "How to fly",
-  author: "Jordan Lates",
-  genre: "aviation",
-};
+    bookId: "4444",
+    title: "Gone with the Wind",
+    author: "Margaret Mitchell",
+    genre: "Fiction"
+}
 
-db.books.insertOne(book4);
+let book5 = {
+    bookId: "5555",
+    title: "Midnight Shadows",
+    author: "Nora Roberts",
+    genre: "Romance"
+}
 
-/* Assignment queries */
+let book6 = {
+    bookId: "6666",
+    title: "Wuthering Heights",
+    author: "Emily Bronte",
+    genre: "Fiction"
+}
 
-//Display a list of books
-db.books.find();
+let book7 = {
+    bookId: "7777",
+    title: "Sense and Sensibility",
+    author: "Jane Austen",
+    genre: "Romance"
+}
 
-//Display a list of books by genre. I interpreted this as listing the books by genre. $orderby is deprecated...
-db.books.find().sort({ genre: 1 });
+let book8 = {
+    bookId: "8888",
+    title: "Anna Karenina",
+    author: "Leo Tolstoy",
+    genre: "Fiction"
+}
 
-//Display a list of books by author. I interpreted this as listing the books by author. $orderby is deprecated...
-db.books.find().sort({ author: 1 });
+let book9 = {
+    bookId: "1112",
+    title: "My Dog Kobe",
+    author: "Jeremy Lates",
+    genre: "Drama",
+}
 
-//Display a book by book id.
-db.books.find({ bookId: "11223344" });
+let book10 = {
+    bookId: "1113",
+    title: "How to Fly",
+    author: "Jordan Lates",
+    genre: "Aviation",
+  };
+
+//Inserting the books into the collection
+db.books.insertMany([book1, book2, book3, book4, book5, book6, book7, book8, book9, book10])
+
+//Query to display a list of books
+db.books.find()
+
+//A query to list books by genre
+db.books.find().sort({ genre: 1 })
+
+//A query to list books by author
+db.books.find().sort({ author: 1})
+
+//A query to display a book by bookId
+db.books.find({bookId: "7777"})
 
 //Display a wishlist by customerId
-db.customers.aggregate([
-  {
-    //Find the customer
-    $match: {
-      customerId: "c1007",
-    },
-  },
-  {
-    $project: {
-      _id: 0,
-      customerId: 1,
-      "wishListItems.bookId": 1,
-      "wishListItems.title": 1,
-      "wishListItems.author": 1,
-      "wishListItems.genre": 1,
-    },
-  },
-]);
-
-//Add books to a customers wishlist
-db.customers.update(
-  { customerId: "c1007" },
-  {
-    $push: {
-      wishListItems: {
-        bookId: "11111111",
-        title: "In good Faith",
-        author: "Scott Pratt",
-        genre: "action",
+db.customer.aggregate([
+    {
+      //Find the customer
+      $match: {
+        customerId: "c1007",
       },
     },
-  }
-);
-//Remove book from customer wishlist
-db.customers.update(
-  { customerId: "c1007" },
-  { $pull: { wishListItems: { bookId: "11111111" } } }
-);
+    {
+      $project: {
+        _id: 0,
+        customerId: 1,
+        "wishListItems.bookId": 1,
+        "wishListItems.title": 1,
+        "wishListItems.author": 1,
+        "wishListItems.genre": 1,
+      },
+    },
+  ]);
+  
+  //Add books to a customers wishlist
+  db.customer.updateOne(
+    { customerId: "c1007" },
+    {
+      $push: {
+        wishListItems: {
+          bookId: "9999",
+          title: "In Good Faith",
+          author: "Scott Pratt",
+          genre: "Action",
+        },
+      },
+    }
+  );
+  //Remove book from customer wishlist
+  db.customer.updateOne(
+    { customerId: "c1007" },
+    { $pull: { wishListItems: { bookId: "9999" } } }
+  );
+  
