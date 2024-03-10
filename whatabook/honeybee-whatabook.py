@@ -53,7 +53,7 @@ for book in db.books.find({"genre": choice}):
 # A blank line
 print('')
 
-
+# A function that takes the input id and prints the wishlist
 def find_id(id):
     # Creating a pipeline to match by entered id
     pipeline = [{"$match": {"customerId": id}}]
